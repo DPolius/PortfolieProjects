@@ -4,9 +4,9 @@ SELECT *
 FROM DBO.CovidDeaths
 ORDER BY 3,4
 
---SELECT *
---FROM DBO.CovidVaccinations
---ORDER BY 3,4
+SELECT *
+FROM DBO.CovidVaccinations
+ORDER BY 3,4
 
 -- Data cleaning: changing numerical data to be used in calculations from nvarchar to float
 
@@ -14,7 +14,7 @@ ALTER TABLE dbo.CovidDeaths
 ALTER COLUMN total_cases float
 
 ALTER TABLE dbo.CovidDeaths
-ALTER COLUMN total_deaths floatv
+ALTER COLUMN total_deaths float
 
 ALTER TABLE dbo.CovidDeaths
 ALTER COLUMN total_cases_per_million float
@@ -30,7 +30,7 @@ FROM DBO.CovidDeaths
 ORDER BY 1,2
 
 -- Looking at Total Cases vs Total deaths 
--- Showing likelihood of dying if you contract covid in the US
+-- Showing the likelihood of dying if you contract covid in the US
 SELECT location, date, total_cases, total_deaths, (total_deaths/ total_cases)*100 AS death_percentage
 FROM DBO.CovidDeaths 
 WHERE location like '%states%' 
@@ -72,10 +72,10 @@ ORDER BY total_death_count DESC
 
 -- GLOBAL NUMBERS 
 
-/*SELECT SUM(new_cases) AS total_cases, SUM(new_deaths) AS total_deaths, total_deaths/total_cases*100 AS percentage_death
+SELECT SUM(new_cases) AS total_cases, SUM(new_deaths) AS total_deaths, total_deaths/total_cases*100 AS percentage_death
 FROM dbo.CovidDeaths  
 WHERE continent IS NOT NULL
-ORDER BY 1,2*/
+ORDER BY 1,2
 
 
 -- Total population vs Vaccination
